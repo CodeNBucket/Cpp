@@ -1,0 +1,98 @@
+/* Create a class Rectangle. The class has attributes length and width, each of which
+defaults to 1. It has member functions that calculate the perimeter and the area of the
+rectangle. It has set and get functions for both length and width. The set function should
+verify that length and width are each floating point numbers larger than 0.0 and lower
+than 20.0
+b. Modify the Rectangle class implemented in Part (a) to include draw function that displays
+the rectangle. However, you first need to include the following member functions:
+• setFillCharacter function to specify the character (such as -) that will be used to fill
+the body of the rectangle.
+• setPerimeterCharacter function to specify the character (such as *) that will be used
+to draw the border of the rectangle. */
+
+#include <iostream>
+#include  <string.h>
+#include <cstring>
+using namespace std;
+
+class Rectangle{
+private:
+    int length;
+    int width;
+
+public:
+
+    Rectangle();
+    float getLength();
+    float getWidth();
+    void setLength(float);
+    void setWidth(float);
+    void show_function(float,float);
+    void setFillCharacter();
+    void setPerimeterCharacter();
+    void draw(int,int);
+
+};
+
+Rectangle::Rectangle() {
+    length=1;
+    width=1;
+}
+
+float Rectangle::getLength() {
+    return length;
+}
+
+float Rectangle::getWidth() {
+    return width;
+}
+
+void Rectangle::setLength(float x) {
+    if(x>0 && x<20)
+        length=x;
+}
+
+void Rectangle::setWidth(float x) {
+    if(x>0 && x<20)
+        width=x;
+}
+
+void Rectangle::show_function(float a, float b) {
+    cout<<"Perimeter is: "<<2*(a+b)<<endl<<"Area is :"<<a*b<<endl;
+}
+
+void Rectangle::setFillCharacter() {
+    cout<<"*";
+
+}
+
+void Rectangle::setPerimeterCharacter() {
+    cout<<"-";
+
+}
+
+void Rectangle::draw(int a, int b) {
+    for(int i=0;i<a;i++) {
+
+        for (int j = 0; j < b; j++) {
+         if(i==0 || i==a-1)
+             setFillCharacter();
+         else if(j==0 || j==b-1)
+             setFillCharacter();
+         else
+             setPerimeterCharacter();
+        }
+        cout<<endl;
+    }
+}
+
+int main()
+{float x,y;
+Rectangle r1;
+r1.setLength(4);
+r1.setWidth(5);
+x=r1.getLength();
+y=r1.getWidth();
+r1.show_function(x,y);
+r1.draw(x,y);
+}
